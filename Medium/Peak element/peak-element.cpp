@@ -14,17 +14,32 @@ class Solution
     public:
     int peakElement(int arr[], int n)
     {
-      int l=0,h=n-1,mid=0;
-      while(l<h)
-      {
-          mid=(l+h)/2;
-          if(arr[mid]<arr[mid+1])
-           l=mid+1;
-           else
-               h=mid;
-      }
-      return l;
-   }
+       // Your code here
+       if (n == 1)
+            return 0;
+
+        for (int i = 0; i < n; i++)
+        {      
+            if (i == 0)
+            {
+                if (arr[i] >= arr[i + 1])
+                    return i;
+            }
+            else if (i == n - 1)
+            {
+                if (arr[i] >= arr[i - 1])
+                    return i;
+            }
+            else
+            {
+                if (arr[i] >= arr[i - 1] && arr[i] >= arr[i + 1])
+                    return i;
+            }
+        }
+
+        // If no peak element is found, return -1.
+        return -1;
+    }
 };
 
 //{ Driver Code Starts.
