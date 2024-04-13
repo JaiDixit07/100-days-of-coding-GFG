@@ -14,12 +14,15 @@ class Solution{
   public:
     int missingNumber(vector<int>& array, int n) {
         // Your code goes here
-        int sum=n*(n+1)/2;
-        int sum1=0;
+        int XOR1=0;
+        int XOR2=0;
         for(int i=0;i<n-1;i++){
-            sum1+=array[i];
+            XOR2=XOR2^array[i];
+            XOR1=XOR1^(i+1);
+            
         }
-        int missnumber=sum-sum1;
+        XOR1=XOR1^n;
+        return XOR1^XOR2;
     }
 };
 
