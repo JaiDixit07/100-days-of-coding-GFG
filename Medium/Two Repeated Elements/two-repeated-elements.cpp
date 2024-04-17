@@ -11,20 +11,17 @@ using namespace std;
 class Solution {
   public:
     //Function to find two repeated elements.
-    vector<int> twoRepeated (int arr[], int N) {
-        vector<int> repeating_numbers;
-
-    // Use the array itself as a frequency map to save space
-    for (int i = 0; i < N + 2; i++) {
-        int index = abs(arr[i]) - 1;  // Map to the range 0 to N-1
-        if (arr[index] < 0) {
-            repeating_numbers.push_back(abs(arr[i]));
-        } else {
-            arr[index] = -arr[index];  // Mark as visited
-        }
-    }
-
-    return repeating_numbers;
+    vector<int> twoRepeated (int arr[], int n) {
+        // Your code here
+        vector <int> res;
+       for(int i=0;i<n+2;i++)
+       {
+           if(arr[abs(arr[i])]>0)
+               arr[abs(arr[i])] *=-1;
+           else
+               res.push_back(abs(arr[i]));
+       }
+       return res;
     }
 };
 
