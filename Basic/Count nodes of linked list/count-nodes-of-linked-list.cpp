@@ -32,9 +32,7 @@ class Solution
     
         //Code here
         int cnt=0;
-        if(head==NULL){
-            return 0;
-        }
+        
         Node* temp=head;
         while(temp){
             cnt++;
