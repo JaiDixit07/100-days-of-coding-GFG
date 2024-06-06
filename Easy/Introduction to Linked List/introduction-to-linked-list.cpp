@@ -57,7 +57,8 @@ class Solution {
         for(int i=1;i<arr.size();i++){
             Node* temp=new Node(arr[i]);
             mover->next = temp;
-            mover=mover -> next;
+            // mover=mover -> next;
+            mover=temp;
             
         }
         return head;
