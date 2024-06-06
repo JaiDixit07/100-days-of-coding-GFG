@@ -34,96 +34,46 @@ struct Node
   
 };
 */
-
 class Solution
 {
     public:
     Node* deleteNode(Node *head, int x)
     {
-        // Check if the list is empty
-        if(head == NULL) {
+        //Your code here
+        if(head==NULL){
             return NULL;
         }
-
-        // If the head node needs to be deleted
-        if(x == 1) {
-            Node* temp = head;
-            head = head->next;
-            if(head) {
-                head->prev = NULL;
-            }
+        if(x==1){
+            Node* temp=head;
+            head=head->next;
+            temp->next=nullptr;
+            head->prev=nullptr;
             delete temp;
             return head;
         }
-
-        // Initialize pointers to traverse the list
-        Node* current = head;
-        int cnt = 1;
-
-        // Traverse to the x-th node
-        while(current && cnt < x) {
-            current = current->next;
+        int cnt=0;
+        Node* temp=head;
+        while(temp){
             cnt++;
-        }
-
-        // If the x-th node is found
-        if(current) {
-            Node* prev = current->prev;
-            Node* next = current->next;
-
-            if(prev) {
-                prev->next = next;
+            if(cnt==x){
+                break;
             }
-            if(next) {
-                next->prev = prev;
-            }
-
-            delete current;
+            temp=temp->next;
         }
-
+        Node*front= temp->next;
+        Node* back=temp->prev;
+        if(front){
+            front->prev=back;
+        }
+        if(back){
+            back->next=front;
+        }
+        temp->prev=nullptr;
+        temp->next=nullptr;
+        delete temp;
         return head;
     }
 };
-
-// class Solution
-// {
-//     public:
-//     Node* deleteNode(Node *head, int x)
-//     {
-//       //Your code here
-//       if(head==NULL){
-//           return NULL;
-//       }
-//       if(x==1){
-//           Node*temp=head;
-//           head=head->next;
-//           if(head){head->prev=nullptr;}
-//           temp->next=nullptr;
-//           delete temp;
-//           return head;
-//       }
-//       int cnt=1 ;
-//       Node* current=head;
-//       Node* prev=NULL;
-//       Node* next=current->next;
-//           while(current ){
-//             if(cnt==x){
-//                 prev->next=next;
-//                 next->prev=current;
-//                 current->prev=nullptr;
-//                 current->next=nullptr;
-//                 delete current;
-//                 break; 
-//             }
-//             cnt++;
-//             prev=current;
-//             current=current->next;
-//             next=current->next;
-              
-//           }
-//       return head;
-//     }
-// };
 
 
 //{ Driver Code Starts.
